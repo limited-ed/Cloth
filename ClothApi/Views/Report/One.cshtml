@@ -1,0 +1,63 @@
+@model List<Node>
+@using ClothApi.Models
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style >
+    .group {
+      width: 100%;
+      
+    } 
+    .group-header {
+      background-color: darkred;
+      color: white;
+      width: 100%;
+      font-size: 16px;
+      font-weight: bold;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      margin-top: -1px;
+    }
+    .group-body {
+      padding-left: 20px;
+      
+    }
+
+    .title {
+      margin-left: 5px;
+    }
+
+    td {
+      border: 1px solid black;
+      margin-top: -1px;
+    }
+
+    h2 {
+      color: red;
+    }
+    table {
+        border-collapse: collapse;
+    }
+
+    table.employee {
+      background-color: lightgrey;
+    }
+
+    table.cloth {
+      margin-top: -1px;
+    }
+
+  </style>
+</head>
+<body>
+
+<h2>Report One</h2>
+
+ @foreach (var n in Model) {
+  @await Html.PartialAsync("OneGroup.cshtml",n);
+}
+
+
+</body>
+</html>

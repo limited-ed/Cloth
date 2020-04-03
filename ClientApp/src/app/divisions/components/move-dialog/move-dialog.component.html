@@ -1,0 +1,24 @@
+<div>
+  <clr-modal [(clrModalOpen)]="visible" [clrModalSize]='"lg"'>
+    <h3 class="modal-title">Переместить подразделение</h3>
+    <div class="modal-body">
+      <div style="height: 355px; overflow-y: scroll;">
+        <clr-tree *ngIf="nodes !== undefined">
+          <clr-tree-node *clrRecursiveFor="let node of nodes; getChildren: getChildren" [(clrExpanded)]="node.expanded">
+            <button
+            class="clr-treenode-link"
+            (click)="select(node)"
+            [class.active]="node.active">
+              {{node.title}}
+            </button>
+          </clr-tree-node>
+        </clr-tree>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary-outline" (click)="visible=false">Отмена</button>
+      <button type="button" class="btn btn-success-outline" (click)="okClick()" [disabled]="selected===null">Применить</button>
+    </div>
+  </clr-modal>
+</div>

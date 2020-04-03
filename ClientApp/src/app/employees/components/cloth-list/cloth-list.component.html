@@ -1,0 +1,18 @@
+<toolbar></toolbar>
+<clr-datagrid class="grid" class="cgrid">
+    <clr-dg-column [style.width.px]="500">Наименование</clr-dg-column>
+    <clr-dg-column>Дата выдачи</clr-dg-column>
+    <clr-dg-column>Дата окончания срока</clr-dg-column>
+
+
+    <clr-dg-row *ngFor="let item of items" [clrDgItem]="item" [class]="getClass(item)">
+        <clr-dg-action-overflow *ngIf="getRole()>1">
+            <button class="action-item" (click)="changeDate(item)"><clr-icon shape="note"></clr-icon>Изменить дату</button>
+        </clr-dg-action-overflow>
+        <clr-dg-cell>{{item.cloth.title}}</clr-dg-cell>
+        <clr-dg-cell>{{item.beginDate  | date}}</clr-dg-cell>
+        <clr-dg-cell>{{item.endDate | date}}</clr-dg-cell>
+
+    </clr-dg-row>
+</clr-datagrid>
+<date-edit (ok)="onOk($event)"></date-edit>

@@ -1,0 +1,93 @@
+@model List<Node>
+@using ClothApi.Models
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style >
+    .group {
+      width: 100%;
+      
+    } 
+    .group-header {
+      background-color: darkred;
+      color: white;
+      width: 100%;
+      font-size: 16px;
+      font-weight: bold;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      margin-top: -1px;
+    }
+    .group-body {
+      padding-left: 10px;
+      
+    }
+
+    .title {
+      margin-left: 5px;
+    }
+
+    td {
+      border: 1px solid black;
+      margin-top: -1px;
+    }
+
+    h2 {
+      color: red;
+    }
+    table {
+        border-collapse: collapse;
+    }
+
+    table.employee {
+      background-color: lightgrey;
+    }
+
+    table.cloth {
+      margin-top: -1px;
+    }
+
+  </style>
+</head>
+<body>
+
+<h2>Report One</h2>
+
+
+@foreach (Node n in Model){
+<div class="group">
+    <div class="group-header"> <span class="title"> @n.Division.Title </span></div>
+    <div class="group-body">
+@foreach (var e in n.Data) {
+    <div class="group-body">
+        <table width="100%" class="employee"> 
+            <tr>
+                <td width=50%>@e.FullName</td>
+                <td width=50%>@e.TabNumber</td>
+            </tr>
+        </table>
+        <div class="group-body">
+            <table class="cloth" width="100%">
+                @foreach(var ec in e.EmployeeCloths)
+                {
+                    <tr>
+                        <td width=40%>@ec.Cloth.Title</td>
+                        <td width=20%>@(ec.BeginDate.HasValue?@ec.BeginDate.Value.ToString("dd MMM yyyy"):"")</td>
+                        <td width=20%>@(ec.EndDate.HasValue?@ec.EndDate.Value.ToString("dd MMM yyyy"):"")</td>
+
+                    </tr>
+                }
+                <tr></tr>
+            </table>
+        </div>
+    </div>
+}
+    </div>
+</div>
+}
+
+
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+<toolbar>
+  <button class="btn btn-success-outline  btn-icon" (click)="onAdd()">
+    <clr-icon shape="pencil"></clr-icon>
+  </button>
+</toolbar>
+<clr-datagrid class="grid">
+  <clr-dg-column>Наименование</clr-dg-column>
+  <clr-dg-column>Срок</clr-dg-column>
+  <clr-dg-row *clrDgItems="let pc of prof.professionCloth" [clrDgItem]="pc">
+    <clr-dg-cell [style.width.%]="65">{{pc.cloth.title}}</clr-dg-cell>
+    <clr-dg-cell [style.width.%]="25">{{pc.cloth.period}}</clr-dg-cell>
+  </clr-dg-row>
+</clr-datagrid>
+
+<cloth-dialog [items]="cloth" [selected]="selectedArray" (ok)="onOk($event)"></cloth-dialog>

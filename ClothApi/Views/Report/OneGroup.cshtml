@@ -1,0 +1,17 @@
+@model Node
+@using ClothApi.Models
+
+<div class="group">
+    <div class="group-header"> <span class="title"> @Model.Division.Title </span></div>
+    <div class="group-body">
+        @foreach (var n in Model.Nodes) {
+            @if(n.Nodes.Count > 0 || (n.Data != null && n.Data.Count>0)){
+                @await Html.PartialAsync("OneGroup",n);
+                @await Html.PartialAsync("Employee",n.Data);               
+            }
+
+        }
+    </div>
+</div>
+
+

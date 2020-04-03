@@ -1,0 +1,16 @@
+<div>
+  <clr-modal [(clrModalOpen)]="visible">
+      <h3 class="modal-title">Удалить подразделение</h3>
+      <div class="modal-body">
+          <h5>Вы действительно хотите удалить подразделение? {{division?.title}}</h5>
+          <clr-checkbox-wrapper>
+              <input type="checkbox" [(ngModel)]="check" clrCheckbox [(ngModel)]="check" name="options" />
+              <label>Подтвердите удаление, так как при данном действии, так же удалятся все подразделения и сотрудники связанные с ним</label>
+          </clr-checkbox-wrapper>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-primary-outline" (click)="visible=false">Отмена</button>
+          <button type="button" class="btn btn-danger-outline" [disabled]="!check" (click)="okClick()">Ok</button>
+      </div>
+  </clr-modal>
+</div>

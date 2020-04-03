@@ -1,0 +1,32 @@
+
+<div class="login-wrapper">
+  <div class="login">
+      <label class="title">
+          <h3 class="welcome">Добро пожаловать</h3>
+          Учет спецодежды
+          <h5 class="hint">Для входа используйте вашу учетную запись</h5>
+      </label>
+      <div class="login-group">
+        <form clrForm>
+            <clr-input-container>
+                <label  class="clr-col-12 clr-col-md-12">Имя пользователя</label>
+                <input clrInput type="text" [(ngModel)]="model.username"  [ngModelOptions]="{standalone: true}"/>
+            </clr-input-container>
+            <clr-input-container>
+                <label class="clr-col-12 clr-col-md-12">Пароль</label>
+                <input clrInput type="password" [(ngModel)]="model.password"  [ngModelOptions]="{standalone: true}"/>
+            </clr-input-container>
+        </form>
+
+
+          <button  class="btn btn-primary" (click)="login()" [disabled]="inProgress||model.username==''||model.password==''" style='margin: 0px;'>Войти в систему</button>
+
+          <div class="error active" *ngIf="error!=''">
+                  {{error}}
+          </div>
+
+      </div>
+  </div>
+</div>
+
+

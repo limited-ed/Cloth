@@ -1,0 +1,16 @@
+<clr-modal [(clrModalOpen)]="visible" [clrModalSize]="'lg'">
+  <h3 class=modal-title>Редактирование</h3>
+  <div class="modal-body">
+    <form clrForm [formGroup]="form">
+      <clr-input-container>
+        <label class="clr-col-3 clr-col-md-3">Наименование</label>
+        <input clrInput type="text" placeholder="" size="40" formControlName="title" class="clr-col-9 clr-col-md-9">
+        <clr-control-error>Строка должна быть не менее 4 символов</clr-control-error>
+      </clr-input-container>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary-outline" (click)="visible=false">Отмена</button>
+    <button type="button" class="btn btn-success-outline" (click)="okClick()" [disabled]="form.invalid">Применить</button>
+  </div>
+</clr-modal>

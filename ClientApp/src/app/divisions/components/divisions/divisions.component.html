@@ -1,0 +1,37 @@
+<div class="c-content">
+  <toolbar>
+      <button class="btn btn-success-outline  btn-icon" (click)="onNew()">
+          <clr-icon shape="plus"></clr-icon>
+      </button>
+
+      <div class="btn-group primary-outline  btn-icon">
+        <button class="btn btn-primary-outline" (click)="onEdit()">
+            <clr-icon shape="pencil"></clr-icon>
+        </button>
+        <button class="btn btn-primary-outline" (click)="onMove()">
+          <clr-icon shape="tree-view"></clr-icon>
+        </button>
+        <button class="btn btn-danger-outline" (click)="onDelete()">
+            <clr-icon shape="trash"></clr-icon>
+        </button>
+      </div>
+  </toolbar>
+  <div class="content">
+    <clr-tree *ngIf="nodes !== undefined">
+      <clr-tree-node *clrRecursiveFor="let node of nodes; getChildren: getChildren" [(clrExpanded)]="node.expanded">
+        <button
+        class="clr-treenode-link"
+        (click)="select(node)"
+        [class.active]="node.active">
+          {{node.title}}
+        </button>
+
+      </clr-tree-node>
+    </clr-tree>
+  </div>
+
+  <edit-dialog (ok)="onEditOk($event)"></edit-dialog>
+  <move-dialog (ok)="onMoveOk($event)"></move-dialog>
+  <delete-dialog (ok)="onDeleteOk($event)"></delete-dialog>
+</div>
+

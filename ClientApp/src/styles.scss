@@ -1,0 +1,68 @@
+/* You can add global styles to this file, and also import other style files */
+
+.login-wrapper {
+	background-color: #ff7700;
+	background-image: url("/assets/login.jpg");
+	background-attachment: fixed;
+	background-size: contain;
+	background-attachment: fixed;
+	background-position: 21rem 0;
+	background-repeat: no-repeat;
+	padding: 0px;
+}
+
+.login-wrapper .login {
+	padding: 0px;
+	background: #fafafa;
+	position: relative;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-ms-flex-pack: center;
+	justify-content: center;
+	padding: 1rem 2.5rem;
+	height: auto;
+	min-height: 100vh;
+	width: 21rem;
+}
+
+.send {
+	margin-top: 1rem;
+	width: 7rem;
+	margin-left: 3.5rem;
+}
+
+.modal-dialog.modal-lg {
+  width: 26rem !important;
+}
+
+:focus {
+  outline: 0px !important;
+}
+
+.clr-treenode-content {
+  flex: 0 0 auto !important;
+}
+
+.clr-treenode-link {
+  padding: 0 0.25rem 0 .25rem !important;
+}
+
+.c-content {
+  padding: 10px;
+}
+
+
+
+.red {
+  background-color: #FFC1C188;
+}
+
+.yellow {
+  background-color: #FBEDAF88;
+}
+
+clr-input-container {
+  height: 42px;
+}

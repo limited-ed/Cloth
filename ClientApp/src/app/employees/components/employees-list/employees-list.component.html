@@ -1,0 +1,48 @@
+<toolbar>
+   <clr-input-container class="find">
+     <input clrInput placeholder="Поиск" (keyup.enter)="onFindEnterPress()" size="40" [(ngModel)]="findName"/>
+   </clr-input-container>
+   <button class="btn btn-primary-outline btn-icon btn-sm" style="padding-left: 6px; padding-right: 6px;" (click)="onFindEnterPress()" style="border: 0px">
+      <clr-icon shape="search" style="width: .8rem; height: .8rem"></clr-icon>
+  </button>
+
+  <div *ngIf="getRole()>2">
+    <button class="btn btn-success-outline btn-icon" (click)="onNew()">
+        <clr-icon shape="plus"></clr-icon>
+    </button>
+
+    <div class="btn-group primary-outline btn-icon">
+      <button class="btn btn-primary-outline" (click)="onEdit()" >
+          <clr-icon shape="pencil"></clr-icon>
+      </button>
+
+      <button class="btn btn-danger-outline" (click)="onDelete()">
+          <clr-icon shape="trash"></clr-icon>
+      </button>
+    </div>
+
+  </div>
+</toolbar>
+<div>
+    <clr-datagrid class="grid" [(clrDgSingleSelected)]="selected" [clrDgRowSelection]="true" (clrDgSingleSelectedChange)="onSelectionChanged($event)">
+        <clr-dg-column [style.width.px]="500">ФИО</clr-dg-column>
+        <clr-dg-column>Профессия</clr-dg-column>
+        <clr-dg-column>Табельный</clr-dg-column>
+        <clr-dg-column>Рост</clr-dg-column>
+        <clr-dg-column>Размер одежды</clr-dg-column>
+        <clr-dg-column>Размен обуви</clr-dg-column>
+        <clr-dg-column>Охват головы</clr-dg-column>
+
+        <clr-dg-row *ngFor="let item of currentEmployees" [clrDgItem]="item" [ngClass]="getRowClass(item)">
+            <clr-dg-cell>{{item.fullName}}</clr-dg-cell>
+            <clr-dg-cell>{{getProf(item.professionId).title}}</clr-dg-cell>
+            <clr-dg-cell>{{item.tabNumber}}</clr-dg-cell>
+            <clr-dg-cell>{{item.height}}</clr-dg-cell>
+            <clr-dg-cell>{{item.clothSize}}</clr-dg-cell>
+            <clr-dg-cell>{{item.legSize}}</clr-dg-cell>
+            <clr-dg-cell>{{item.headSize}}</clr-dg-cell>
+
+        </clr-dg-row>
+    </clr-datagrid>
+</div>
+<employee-edit (ok)="editOk($event)" [professions]="professions"></employee-edit>

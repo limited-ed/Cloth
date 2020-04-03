@@ -1,0 +1,27 @@
+@model List<Employee>
+@using ClothApi.Models
+
+@foreach (var e in Model) {
+    <div class="group-body">
+        <table width="100%" class="employee"> 
+            <tr>
+                <td width=50%>@e.FullName</td>
+                <td width=50%>@e.TabNumber</td>
+            </tr>
+        </table>
+        <div class="group-body">
+            <table class="cloth" width="100%">
+                @foreach(var ec in e.EmployeeCloths)
+                {
+                    <tr>
+                        <td width=40%>@ec.Cloth.Title</td>
+                        <td width=20%>@(ec.BeginDate.HasValue?@ec.BeginDate.Value.ToString("dd MMM yyyy"):"")</td>
+                        <td width=20%>@(ec.EndDate.HasValue?@ec.EndDate.Value.ToString("dd MMM yyyy"):"")</td>
+
+                    </tr>
+                }
+                <tr></tr>
+            </table>
+        </div>
+    </div>
+}

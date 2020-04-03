@@ -1,0 +1,13 @@
+<div class="c-content clr-row">
+  <div class="clr-col-3 content">
+    <divisions (selectionChanged)="changeDivision($event)"></divisions>
+  </div>
+  <div class="clr-col-9">
+    <div class="employees-list">
+      <employees-list (selectionChanged)="changeEmployee($event)"></employees-list>
+    </div>
+    <div>
+      <cloth-list [items]="employeeCloth"></cloth-list>
+    </div>
+  </div>
+</div>

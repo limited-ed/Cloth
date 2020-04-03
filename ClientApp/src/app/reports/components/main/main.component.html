@@ -1,0 +1,17 @@
+<div class="c_content content-container">
+  <div style="height: calc(100vh - 84px); width: 20%; padding: 0px 10px;">
+    <clr-datagrid [clrDgRowSelection]="true" [(clrDgSingleSelected)]="selectedReport">
+      <clr-dg-column>Отчеты</clr-dg-column>
+      <clr-dg-row *clrDgItems="let i of reportsList" [clrDgItem]="i">
+        <clr-dg-cell>{{i.title}}</clr-dg-cell>
+      </clr-dg-row>
+    </clr-datagrid>
+    <button class="btn btn-primary" (click)="showPdf()">Показать</button>
+  </div>
+  <div style="width: 80%; padding: 10px;">
+    <div *ngIf="pdf" >
+          <ngx-extended-pdf-viewer #viewer [src]="pdf" useBrowserLocale="true" height="calc(100vh - 134px)"  [sidebarVisible]="false" [showSidebarButton]="false"
+          [showBookmarkButton]="false" [showOpenFileButton]="false" [textLayer]="true"></ngx-extended-pdf-viewer>
+    </div>
+  </div>
+</div>

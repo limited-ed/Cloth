@@ -1,0 +1,16 @@
+<clr-modal [(clrModalOpen)]="visible">
+  <h3 class=modal-title></h3>
+  <div class="modal-body">
+    <form clrForm #simpleForm="ngForm">
+      <h4>Введите дату выдачи</h4>
+      <clr-date-container>
+          <label class="clr-col-3 clr-col-md-3">Введите дату</label>
+          <input type="date" name="date" [(clrDate)]="date" clrDate class="clr-col-9 clr-col-md-9">>
+      </clr-date-container>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary-outline" (click)="visible=false">Отмена</button>
+    <button type="button" class="btn btn-success-outline" (click)="okClick()">Применить</button>
+  </div>
+</clr-modal>

@@ -1,0 +1,18 @@
+<clr-modal [(clrModalOpen)]="visible" [clrModalSize]="'lg'">
+  <h3 class=modal-title></h3>
+  <div class="modal-body">
+    <clr-datagrid [(clrDgSelected)]="selected" [clrDgRowSelection]="true" [style.height.px]="400" *ngIf="items">
+      <clr-dg-column [style.width.%]="75">Наименование</clr-dg-column>
+      <clr-dg-column [style.width.%]="15">Срок</clr-dg-column>
+      <clr-dg-row *clrDgItems="let item of items" [clrDgItem]="item">
+        <clr-dg-cell [style.width.%]="75">{{item.title}}</clr-dg-cell>
+        <clr-dg-cell [style.width.%]="15">{{item.period}}</clr-dg-cell>
+      </clr-dg-row>
+    </clr-datagrid>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary-outline" (click)="visible=false">Отмена</button>
+    <button type="button" class="btn btn-success-outline" (click)="okClick()">Применить</button>
+  </div>
+</clr-modal>
+

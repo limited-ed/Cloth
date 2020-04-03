@@ -1,0 +1,47 @@
+
+<div class="main-container">
+  <header class="header-6">
+    <div class="branding">
+
+    </div>
+    <div class="header-nav">
+        <a [routerLink]="'/main'" class="nav-link nav-text"  [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Главная</a>
+        <a [routerLink]="'employees'" class="nav-link nav-text" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Работники</a>
+        <a [routerLink]="'professions'" class="nav-link nav-text" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" *ngIf="getRole()>2">Профессии</a>
+        <a [routerLink]="'cloth'" class="nav-link nav-text" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" *ngIf="getRole()>2">Спецодежда</a>
+        <a [routerLink]="'divs'" class="nav-link nav-text" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" *ngIf="getRole()>2">Подразделения</a>
+        <a [routerLink]="'reports'" class="nav-link nav-text" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" *ngIf="getRole()>2">Отчеты</a>
+        <a [routerLink]="'users'" class="nav-link nav-text" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" *ngIf="getRole()===4">Пользователи</a>
+    </div>
+    <div class="header-actions">
+      <clr-dropdown>
+          <button class="nav-link nav-icon-text" clrDropdownTrigger aria-label="toggle settings menu">
+            <clr-icon shape="user"></clr-icon>
+            <span class="nav-text">{{getUsername()}}</span>
+              <clr-icon shape="caret down"></clr-icon>
+          </button>
+          <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+              <a (click)="logout()" clrDropdownItem>Log out</a>
+          </clr-dropdown-menu>
+      </clr-dropdown>
+  </div>
+</header>
+  <div class="content-container">
+      <div class="content-area">
+         <router-outlet></router-outlet>
+      </div>
+  </div>
+  <toolbar class="status">
+    <div *ngIf="isLoading||isSaving">
+      <div >
+          <clr-spinner clrInline>
+            Downloading
+          </clr-spinner>
+          <span *ngIf="isLoading">&nbsp;&nbsp;Загрузка данных</span>
+          <span *ngIf="isSaving">&nbsp;&nbsp;Сохранение данных</span>
+      </div>
+    </div>
+
+      <span *ngIf="error!==''" class="label label-danger">Error <clr-icon shape="close"></clr-icon> </span>
+    </toolbar>
+</div>

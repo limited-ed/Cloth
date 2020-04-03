@@ -1,0 +1,29 @@
+<div class="c-content">
+  <toolbar>
+    <button class="btn btn-success-outline  btn-icon" (click)="onNew()">
+      <clr-icon shape="plus"></clr-icon>
+  </button>
+
+  <div class="btn-group primary-outline  btn-icon">
+    <button class="btn btn-primary-outline" (click)="onEdit()">
+        <clr-icon shape="pencil"></clr-icon>
+    </button>
+    <button class="btn btn-danger-outline" (click)="onDelete()">
+        <clr-icon shape="trash"></clr-icon>
+    </button>
+  </div>
+  </toolbar>
+
+  <clr-datagrid [(clrDgSingleSelected)]="selected" [clrDgRowSelection]="true" [style.width.px]="846" class="grid">
+    <clr-dg-column  [style.width.px]="600">Наименование</clr-dg-column>
+    <clr-dg-column  [style.width.px]="200">Срок службы</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let unit of cloth" [clrDgItem]="unit">
+        <clr-dg-cell>{{unit.title}}</clr-dg-cell>
+        <clr-dg-cell>{{unit.period}}</clr-dg-cell>
+    </clr-dg-row>
+
+    </clr-datagrid>
+</div>
+
+<edit-dialog (ok)="onOkEdit($event)"></edit-dialog>

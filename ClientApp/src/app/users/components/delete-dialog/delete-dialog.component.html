@@ -1,0 +1,12 @@
+<div>
+    <clr-modal [(clrModalOpen)]="visible">
+        <h3 class="modal-title">Удалить пользователя</h3>
+        <div class="modal-body">
+            <p *ngIf="user!== undefined">Вы действительно хотите удалить пользователя {{user.userName}}( {{user.login}} )</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary-outline" (click)="visible=false">Cancel</button>
+            <button type="button" class="btn btn-danger-outline" (click)="okClick()">Ok</button>
+        </div>
+    </clr-modal>
+</div>

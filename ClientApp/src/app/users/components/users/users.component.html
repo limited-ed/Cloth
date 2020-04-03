@@ -1,0 +1,36 @@
+<div class="c-content">
+  <toolbar>
+    <button class="btn btn-sm btn-primary-outline" (click)="onNew()">
+        <clr-icon shape="plus"></clr-icon>
+        Новый пользователь
+    </button>
+  </toolbar>
+
+  <clr-datagrid>
+    <clr-dg-column style="width: 100px;">#</clr-dg-column>
+    <clr-dg-column>Логин</clr-dg-column>
+    <clr-dg-column>Имя</clr-dg-column>
+    <clr-dg-column>Роль</clr-dg-column>
+
+
+    <clr-dg-row *ngFor="let user of users" [clrDgItem]="user">
+        <clr-dg-action-overflow>
+            <button class="action-item" (click)="onEdit(user)"><clr-icon shape="note"></clr-icon> Редактировать</button>
+            <button class="action-item" (click)="onChangePassword(user)"><clr-icon shape="lock"></clr-icon>Сменить пароль</button>
+            <button class="action-item" (click)="onDelete(user)" *ngIf="user.id!==1"><clr-icon shape="trash"></clr-icon> Удалить</button>
+        </clr-dg-action-overflow>
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.login}}</clr-dg-cell>
+        <clr-dg-cell>{{user.userName}}</clr-dg-cell>
+        <clr-dg-cell>{{getUserRole(user.roleId)}}</clr-dg-cell>
+
+    </clr-dg-row>
+
+    <clr-dg-footer>{{users.length}} Пользователь</clr-dg-footer>
+  </clr-datagrid>
+
+  <user-dialog (ok)="saveUserToSrv($event)"></user-dialog>
+  <password-dialog (ok)="saveUserToSrv($event)"></password-dialog>
+  <delete-dialog (ok)="deleteFromSrv($event)"></delete-dialog>
+</div>
+

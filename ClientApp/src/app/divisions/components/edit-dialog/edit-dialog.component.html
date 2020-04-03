@@ -1,0 +1,20 @@
+<div>
+  <clr-modal [(clrModalOpen)]="visible" [clrModalSize]='"lg"'>
+    <h3 class="modal-title">Редактирование подразделения</h3>
+
+    <div class="modal-body">
+      <div *ngIf="edit == false"><h5>Создать новое подразделение в: <strong>{{division?.title}}</strong> </h5></div>
+      <form clrForm [formGroup]="editForm">
+          <clr-input-container>
+              <label class="clr-col-3 clr-col-md-3">Наименование подразделения</label>
+              <input clrInput type="text" placeholder="" size="40" formControlName="title" class="clr-col-9 clr-col-md-9">
+              <clr-control-error></clr-control-error>
+          </clr-input-container>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary-outline" (click)="visible=false">Отмена</button>
+      <button type="button" class="btn btn-success-outline" (click)="okClick()" [disabled]="editForm.invalid">Применить</button>
+    </div>
+  </clr-modal>
+</div>
