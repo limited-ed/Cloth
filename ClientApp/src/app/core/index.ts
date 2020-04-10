@@ -1,6 +1,7 @@
 ﻿export * from './services/auth.service';
 export * from './guarsds/authentication.guard';
 export * from './guarsds/admin.guard';
+export * from './guarsds/safety.guard';
 // export * from '../app.constants';
 // export * from './directives/button-link-active';
 export * from './services/divisions.service';

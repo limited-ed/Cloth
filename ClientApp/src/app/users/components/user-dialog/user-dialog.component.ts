@@ -73,8 +73,8 @@ export class UserDialogComponent implements OnInit {
   }
 
   changeSelected(data, node: TreeNode) {
-    if (this._selected === null || node.nodes.length > 0) { return; }
-    if (data === 1) {
+    if (this._selected === null) { return; }
+    if (data !== 0) {
       this._selected.push(node.data.id);
     } else {
       let i = this._selected.findIndex(e => e === node.data.id);

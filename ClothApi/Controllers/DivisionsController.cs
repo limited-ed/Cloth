@@ -37,8 +37,8 @@ namespace ClothApi.Controllers
             }
             else
             {
-               var udivs= await _context.UserDivisions.Where( w => w.IdentityUserId==userId).ToListAsync();
-               list = await _context.Divisions.Where(w => udivs.Any( a => a.DivisionId == w.Id )).ToListAsync();
+               var udivs= await _context.UserDivisions.Where( w => w.IdentityUserId==userId).Select(s => s.DivisionId).ToListAsync();
+               list = await _context.Divisions.Where(w => udivs.Contains(w.Id)).ToListAsync();
             }
             
 
